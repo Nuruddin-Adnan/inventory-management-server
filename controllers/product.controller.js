@@ -2,7 +2,37 @@ const { getProductsService, createProductService, updateProductService, bulkUpda
 
 exports.getProducts = async (req, res, next) => {
     try {
-        const products = await getProductsService();
+        let filters = { ...req.query }
+        const queries = {}
+
+        // sort, page, limit -> exclude
+        const excludeFields = ['sort', 'page', 'limit', 'fields'];
+        excludeFields.forEach(field => delete filters[field]);
+
+        // gt, gte, lt, lte
+        let filtersString = JSON.stringify(filters);
+        filtersString = filtersString.replace(/\b(gt|gte|lt|lte)\b/g, match => `$${match}`);
+
+        filters = JSON.parse(filtersString);
+
+
+
+        if (req.query.fields) {
+            // const fields = req.query.fields.split(',').join(' ');
+            const fields = req.query.fields.replaceAll(',', ' ');
+            queries.fields = fields
+        }
+
+        if (req.query.sort) {
+            const sort = req.query.sort.split(',').join(' ');
+            queries.sort = sort
+        }
+
+        if (req.query.limit) {
+            queries.limit = req.query.limit
+        }
+
+        const products = await getProductsService(filters, queries);
         res.status(200).json({
             status: 'success',
             message: 'Data found successfully',
@@ -41,6 +71,7 @@ exports.updateProduct = async (req, res, next) => {
     try {
         const { id } = req.params
         const result = await updateProductService(id, req.body);
+
         res.status(200).json({
             status: 'success',
             message: 'Product update successfully',
@@ -59,6 +90,7 @@ exports.updateProduct = async (req, res, next) => {
 exports.bulkUpdateProduct = async (req, res, next) => {
     try {
         const result = await bulkUpdateProductService(req.body)
+
         res.status(200).json({
             status: 'success',
             message: 'Products update successfully',
@@ -78,6 +110,7 @@ exports.deleteProduct = async (req, res, next) => {
     try {
         const { id } = req.params
         const result = await deleteProductService(id);
+
         res.status(200).json({
             status: 'success',
             message: 'Product delete successfully',
@@ -96,6 +129,7 @@ exports.deleteProduct = async (req, res, next) => {
 exports.bulkDeleteProduct = async (req, res, next) => {
     try {
         const result = await bulkDeleteProductService(req.body)
+
         res.status(200).json({
             status: 'success',
             message: 'Products update successfully',
