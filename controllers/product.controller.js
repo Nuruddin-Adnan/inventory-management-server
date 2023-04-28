@@ -15,8 +15,6 @@ exports.getProducts = async (req, res, next) => {
 
         filters = JSON.parse(filtersString);
 
-
-
         if (req.query.fields) {
             // const fields = req.query.fields.split(',').join(' ');
             const fields = req.query.fields.replaceAll(',', ' ');
@@ -28,8 +26,12 @@ exports.getProducts = async (req, res, next) => {
             queries.sort = sort
         }
 
-        if (req.query.limit) {
-            queries.limit = req.query.limit
+        if (req.query.page || req.query.limit) {
+            const { page = 1, limit = 10 } = req.query;
+            const skip = (page - 1) * parseInt(limit)
+
+            queries.skip = skip;
+            queries.limit = parseInt(limit)
         }
 
         const products = await getProductsService(filters, queries);
