@@ -52,8 +52,11 @@ exports.getProducts = async (req, res, next) => {
 // posting to database using create method
 exports.createProduct = async (req, res, next) => {
     try {
-        const result = await createProductService(req.body)
+        const result = await createProductService(req.body);
+
+        // testing the injectd custom method --> from model
         result.logger();
+
         res.status(200).json({
             status: 'success',
             message: 'Successfully inserted product',

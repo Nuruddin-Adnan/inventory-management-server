@@ -6,7 +6,7 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please provide a name for the product'],
         trim: true,
-        unique: [true, 'Name must be unique'],
+        unique: true,
         minLength: [3, 'Name must be at least at least 3 characters'],
         maxLength: [100, 'Name is too large']
     },
@@ -14,64 +14,40 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    price: {
-        type: Number,
-        required: true,
-        min: [0, "Price can't be negative"]
-    },
-    unit: {
+    imgURLs: [{
         type: String,
         required: true,
-        enum: {
-            values: ["kg", "litre", "pcs"],
-            message: "unit value can't be {VALUE}, must be kg/litre/pcs"
-        }
-    },
-    quantity: {
-        type: Number,
-        required: true,
-        min: [0, "quantit can't be negative"],
         validate: {
             validator: (value) => {
-                const isInteger = Number.isInteger(value);
-                if (isInteger) {
-                    return true
-                } else {
-                    return false
+                if (!Array.isArray(value)) {
+                    return false;
                 }
-            }
-        },
-        message: "Quantity must be an integer"
-    },
-    status: {
-        type: String,
-        required: true,
-        enum: {
-            values: ["in-stock", "out-of-stock", "discontinued"],
-            message: "status can't be {VALUE}"
+                let isValid = true;
+                value.forEach(url => {
+                    if (!validator.isURL(url)) {
+                        isValid = false;
+                    }
+                })
+                return isValid;
+            },
+            message: "Please provide valid img urls"
         }
+    }],
+    category: {
+        type: String,
+        required: true
     },
-    // supplier: {
-    //     type: mongoose.Schema.ObjectId,
-    //     ref: "Supplier"
-    // },
-    // categories: [{
-    //     name: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     _id: mongoose.Schema.ObjectId
-    // }]
-
-
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // updatedAt: {
-    //     type: Date,
-    //     default: Date.now
-    // }
+    brnad: {
+        name: {
+            type: String,
+            required: true
+        },
+        id: {
+            type: Object,
+            ref: "Brand",
+            required: true
+        }
+    }
 }, {
     timestamps: true
 });
@@ -89,7 +65,7 @@ productSchema.pre('save', function (next) {
 //     console.log('After saving data');
 // })
 
-// create custom method
+// create custom method  for testing
 productSchema.methods.logger = function () {
     console.log(`Data save for ${this.name}`);
 }
