@@ -11,7 +11,7 @@ exports.createBrand = async (req, res, next) => {
     } catch (error) {
         res.status(400).json({
             status: 'fail',
-            message: 'Brand no create',
+            message: "Can't create Brand",
             error: `${error.message}`
         })
     }
@@ -22,6 +22,7 @@ exports.getBrands = async (req, res, next) => {
         const brands = await getBrandsService();
         res.status(200).json({
             status: 'success',
+            message: 'Data found successfully',
             data: brands
         })
     } catch (error) {
@@ -57,7 +58,7 @@ exports.updateBrand = async (req, res, next) => {
         const { id } = req.params;
         const result = await updateBrandService(id, req.body);
 
-        if (!result.nModified) {
+        if (result.modifiedCount === 0) {
             return res.status(400).json({
                 status: 'fail',
                 error: "Can't update the brand"
