@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Janker vi",
+    "email": "janker@email.com",
+    "brand": {
+      "name": "Pran",
+      "id": "..."
+    },
+    "contactNumber": "01771234567",
+    "emergencyContactNumber": "01345687445",
+    "tradeLicenceNumber": "CD01345NN687445",
+    "presentAddress": "Agargaon Dhaka",
+    "permanentAddress": "Narayanganj",
+    "store": "dhaka",
+    "imgURL": "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
+    "nationalIdImgURL": "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
+    "status": "active"
+  },
+  {
+    "name": "Adnan vi",
+    "email": "adnan@email.com",
+    "brand": {
+      "name": "Pran",
+      "id": "..."
+    },
+    "contactNumber": "01771117454",
+    "emergencyContactNumber": "01345687445",
+    "tradeLicenceNumber": "CD01345NN687445",
+    "presentAddress": "Agargaon Dhaka",
+    "permanentAddress": "Narayanganj",
+    "store": "dhaka",
+    "imgURL": "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
+    "nationalIdImgURL": "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
+    "status": "active"
+  }
+]
