@@ -6,7 +6,6 @@ const supplierSchema = mongoose.Schema({
     name: {
         type: String,
         trim: true,
-        lowercase: true,
         required: [true, "Please provide a name"],
         minLength: [3, "Name must be at least  3 characters"],
         maxLength: [100, "Name is too large"]
@@ -70,12 +69,11 @@ const supplierSchema = mongoose.Schema({
             message: "{VALUE} is not a valid name"
         }
     },
-    imgURL: {
+    imageURL: {
         type: String,
-        required: [true, "Please provide "],
         validate: [validator.isURL, "Please provide a valid URL"]
     },
-    nationalIdImgURL: {
+    nationalIdimageURL: {
         type: String,
         validate: [validator.isURL, "Please provide a valid URL"]
     },

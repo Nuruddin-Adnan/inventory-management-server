@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
+const validator = require('validator');
 
 // schema
 const stockSchema = mongoose.Schema({
@@ -12,7 +13,6 @@ const stockSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please provide a name for the product'],
         trim: true,
-        unique: true,
         minLength: [3, 'Name must be at least at least 3 characters'],
         maxLength: [100, 'Name is too large']
     },
@@ -20,31 +20,17 @@ const stockSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    imgURLs: [{
+    imageURLs: [{
         type: String,
         required: true,
-        validate: {
-            validator: (value) => {
-                if (!Array.isArray(value)) {
-                    return false;
-                }
-                let isValid = true;
-                value.forEach(url => {
-                    if (!validator.isURL(url)) {
-                        isValid = false;
-                    }
-                })
-                return isValid;
-            },
-            message: "Please provide valid img urls"
-        }
+        validate: [validator.isURL, "Please provide a valid image URL"]
     }],
     unit: {
         type: String,
         required: [true, 'Please provide the unit value'],
         enum: {
-            values: ["kg", "litre", "pcs", "bag"],
-            message: "unit value can't be {VALUE}, must be kg/litre/pcs/bag"
+            values: ["gm", "kg", "ml", "litre", "pcs", "bag"],
+            message: "unit value can't be {VALUE}, must be gm/kg/ml/litre/pcs/bag"
         }
     },
     price: {
@@ -106,6 +92,11 @@ const stockSchema = mongoose.Schema({
             type: ObjectId,
             ref: 'Supplier'
         }
+    },
+    sellCount: {
+        type: Number,
+        default: 0,
+        min: 0
     }
 }, {
     timestamps: true

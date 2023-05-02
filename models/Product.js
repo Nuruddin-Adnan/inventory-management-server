@@ -16,7 +16,7 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    imgURLs: {
+    imageURLs: {
         type: [String],
         required: true,
         validate: {
