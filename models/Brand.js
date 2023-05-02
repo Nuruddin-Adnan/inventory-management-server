@@ -12,6 +12,11 @@ const brandSchema = mongoose.Schema({
         lowercase: true
     },
     description: String,
+    imgURL: {
+        type: String,
+        trim: true,
+        validate: [validator.isURL, "Please provide a valid URL"]
+    },
     email: {
         type: String,
         trim: true,

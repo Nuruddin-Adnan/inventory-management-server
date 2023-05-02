@@ -19,7 +19,8 @@ exports.createBrand = async (req, res, next) => {
 
 exports.getBrands = async (req, res, next) => {
     try {
-        const brands = await getBrandsService();
+        const filters = { ...req.query }
+        const brands = await getBrandsService(filters);
         res.status(200).json({
             status: 'success',
             message: 'Data found successfully',

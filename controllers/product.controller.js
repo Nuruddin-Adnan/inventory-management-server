@@ -91,7 +91,7 @@ exports.updateProduct = async (req, res, next) => {
     }
 }
 
-// buld-update
+// bulk-update
 exports.bulkUpdateProduct = async (req, res, next) => {
     try {
         const result = await bulkUpdateProductService(req.body)
@@ -130,7 +130,7 @@ exports.deleteProduct = async (req, res, next) => {
     }
 }
 
-// buld-delete
+// bulk-delete
 exports.bulkDeleteProduct = async (req, res, next) => {
     try {
         const result = await bulkDeleteProductService(req.body)
@@ -144,6 +144,32 @@ exports.bulkDeleteProduct = async (req, res, next) => {
         res.status(400).json({
             status: 'fail',
             message: 'Couldn\'t update',
+            error: `${error.message}`
+        })
+    }
+}
+
+// image upload
+exports.fileUpload = async (req, res, next) => {
+    try {
+        res.status(200).json(req.file)
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: 'Couldn\'t upload the file',
+            error: `${error.message}`
+        })
+    }
+}
+
+// multiple image upload
+exports.filesUpload = async (req, res, next) => {
+    try {
+        res.status(200).json(req.files)
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: 'Couldn\'t upload the file',
             error: `${error.message}`
         })
     }
