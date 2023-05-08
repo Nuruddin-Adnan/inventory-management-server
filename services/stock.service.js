@@ -16,7 +16,7 @@ exports.getStocksService = async (filters, queries) => {
 }
 
 exports.getStockByIdService = async (id) => {
-    const stock = await Stock.findOne({ _id: id }).populate('brnad.id').populate('store.id').populate('suppliedBy.id');
+    const stock = await Stock.findOne({ _id: id }).populate('brand.id').populate('store.id').populate('suppliedBy.id');
     return stock;
 }
 

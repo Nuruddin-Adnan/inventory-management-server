@@ -1,4 +1,4 @@
-const { getStocksService, createStockService, updateStockService, bulkUpdateStockService, deleteStockService, bulkDeleteStockService } = require("../services/stock.service");
+const { getStocksService, createStockService, updateStockService, bulkUpdateStockService, deleteStockService, bulkDeleteStockService, getStockByIdService } = require("../services/stock.service");
 
 exports.getStocks = async (req, res, next) => {
     try {
@@ -51,13 +51,12 @@ exports.getStocks = async (req, res, next) => {
 exports.getStockById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const stock = await getStockByIdService(filters, queries);
+        const stock = await getStockByIdService(id);
 
         if (!stock) {
             return res.status(400).json({
                 status: 'fail',
-                message: 'Data not found',
-                error: `${error.message}`
+                error: 'Data not found'
             })
         }
 

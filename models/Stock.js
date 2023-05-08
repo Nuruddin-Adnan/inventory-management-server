@@ -41,7 +41,7 @@ const stockSchema = mongoose.Schema({
     quantity: {
         type: Number,
         required: [true, 'Please provide the quantity'],
-        min: [0, "Product quantity can't be negative"]
+        // min: [0, "Product quantity can't be negative"]
     },
     status: {
         type: String,
@@ -55,7 +55,7 @@ const stockSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please provide a category name'],
     },
-    brnad: {
+    brand: {
         name: {
             type: String,
             required: true
@@ -103,7 +103,7 @@ const stockSchema = mongoose.Schema({
 });
 
 stockSchema.pre('save', function (next) {
-    if (this.quantity = 0) {
+    if (this.quantity === 0) {
         this.status = 'out-of-stock'
     }
     next()

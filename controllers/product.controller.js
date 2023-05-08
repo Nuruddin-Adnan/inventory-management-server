@@ -35,6 +35,14 @@ exports.getProducts = async (req, res, next) => {
         }
 
         const products = await getProductsService(filters, queries);
+
+        if (!products) {
+            return res.status(400).json({
+                status: 'fail',
+                error: 'Data not found'
+            })
+        }
+
         res.status(200).json({
             status: 'success',
             message: 'Data found successfully',

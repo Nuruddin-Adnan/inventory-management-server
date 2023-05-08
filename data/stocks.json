@@ -1,0 +1,56 @@
+[
+    {
+        "productId": "644fc9f6b7a30edb3aeacbb1",
+        "name": "Aci Nazirshail Rice - 5kg",
+        "description": "Aci Nazirshail Rice. Fresh and Clean, Vacuum Packed. Pran Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
+        "imageURLs": [
+            "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1",
+            "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1"
+        ],
+        "unit": "kg",
+        "price": "490",
+        "quantity": "50",
+        "status": "in-stock",
+        "category": "Rice",
+        "brand": {
+            "name": "aci",
+            "id": "644dc4722bd3ef29342e726e"
+        },
+        "store": {
+            "name": "dhaka",
+            "id": "644dc4722bd3ef29342e726e"
+        },
+        "suppliedBy": {
+            "name": "janker vi",
+            "id": "6450d837cfa163cc0953b64a"
+        },
+        "sellCount": "0"
+    },
+    {
+        "productId": "644fc9f6b7a30edb3aeacbb1",
+        "name": "Pran Nazirshail Rice - 5kg",
+        "description": "Pran Nazirshail Rice. Fresh and Clean, Vacuum Packed. Pran Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
+        "imageURLs": [
+            "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1",
+            "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1"
+        ],
+        "unit": "kg",
+        "price": "450",
+        "quantity": "20",
+        "status": "in-stock",
+        "category": "Rice",
+        "brand": {
+            "name": "aci",
+            "id": "644dc4722bd3ef29342e726e"
+        },
+        "store": {
+            "name": "dhaka",
+            "id": "644dc4722bd3ef29342e726e"
+        },
+        "suppliedBy": {
+            "name": "janker vi",
+            "id": "6450d837cfa163cc0953b64a"
+        },
+        "sellCount": "0"
+    }
+]
