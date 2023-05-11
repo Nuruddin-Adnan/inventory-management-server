@@ -91,6 +91,11 @@ userSchema.pre('save', function (next) {
     next();
 })
 
+userSchema.methods.comparePassword = function (password, hash) {
+    const isValidPassword = bcrypt.compareSync(password, hash)
+    return isValidPassword;
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
